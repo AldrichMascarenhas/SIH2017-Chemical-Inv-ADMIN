@@ -1,0 +1,87 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Producers By State</span>
+    <span flex></span>
+    <!--TO DO ADD LOGOUT HERE-->
+    <!--<a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>-->
+  </div>
+
+  <div layout="column" layout-align="start center">
+
+
+    <md-card>
+      <md-card-title>List of Producers in {{state}}</md-card-title>
+      <md-card-subtitle>Shown are the Producers in the state of {{state}}
+      </md-card-subtitle>
+      <md-divider></md-divider>
+      <md-card-content>
+
+
+        <table td-data-table>
+
+
+          <th td-data-table-column
+              *ngFor="let column of columns"
+              [numeric]="column.numeric">
+            {{column.label}}
+          </th>
+
+          <th td-data-table-column>
+            View
+          </th>
+
+          <tr td-data-table-row *ngFor="let producer of producersRootModel">
+
+            <td td-data-table-cell>
+              {{producer.id}}
+            </td>
+            <td td-data-table-cell>
+              {{producer.name}}
+            </td>
+
+
+            <td td-data-table-cell>
+              {{producer.producers_type}}
+            </td>
+
+            <td td-data-table-cell>
+              {{producer.created_at}}
+            </td>
+
+
+            <td td-data-table-cell>
+              {{producer.producer_location.state || "HTY"}}
+            </td>
+
+
+            <td td-data-table-cell>
+              {{producer.producer_location.pincode}}
+            </td>
+
+
+            <td td-data-table-cell (click)="openPrompt(producer.id)">
+              <button md-button [class.md-accent]>{{'View Menu'}}</button>
+            </td>
+
+          </tr>
+        </table>
+
+
+      </md-card-content>
+
+
+    </md-card>
+
+
+  </div>
+
+
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Department of Chemicals & PetroChemicals</span>
+      <span flex></span>
+    </div>
+  </td-layout-footer>
+
+
+</td-layout-nav>

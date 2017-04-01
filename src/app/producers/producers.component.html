@@ -1,0 +1,94 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Producers</span>
+    <span flex></span>
+    <!--TO DO ADD LOGOUT HERE-->
+    <!--<a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>-->
+  </div>
+
+
+  <div layout="row" layout-align="start stretch">
+    <div flex="30">
+
+      <!-- Basic Card -->
+      <md-card>
+        <md-card-title>List of Top Producers</md-card-title>
+        <md-card-subtitle>Producers with highest number of Products</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-card-content>
+          <table td-data-table>
+
+
+            <th td-data-table-column
+                *ngFor="let column of columns"
+                [numeric]="column.numeric">
+              {{column.label}}
+            </th>
+
+
+            <tr td-data-table-row *ngFor="let data of datas">
+
+              <td td-data-table-cell>
+                {{data.state}}
+              </td>
+              <td td-data-table-cell>
+                {{data.quantity}}
+              </td>
+
+
+            </tr>
+          </table>
+
+        </md-card-content>
+
+      </md-card>
+
+
+      <md-card>
+
+        <md-card-title>Search</md-card-title>
+        <md-divider></md-divider>
+        <md-card-content>
+
+          <td-search-box backIcon="arrow_back" placeholder="Search here" [showUnderline]="true" [debounce]="500"
+                         [alwaysVisible]="true">
+          </td-search-box>
+
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div flex="70">
+
+      <sebm-google-map
+        [latitude]="28.704059"
+        [longitude]="77.102490"
+        [zoom]="5.5"
+      >
+
+        <sebm-google-map-marker
+          *ngFor="let m of markers; let i = index"
+          (markerClick)="clickedMarker(m.label)"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          [label]="m.label"
+        ></sebm-google-map-marker>
+
+
+      </sebm-google-map>
+
+    </div>
+
+  </div>
+
+
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Department of Chemicals & PetroChemicals</span>
+      <span flex></span>
+    </div>
+  </td-layout-footer>
+
+
+</td-layout-nav>

@@ -1,0 +1,92 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Products By Producer</span>
+    <span flex></span>
+    <!--TO DO ADD LOGOUT HERE-->
+    <!--<a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>-->
+  </div>
+
+  <div layout="column" layout-align="start center">
+
+
+    <md-card>
+      <md-card-title>List of Products
+        </md-card-title>
+      <md-card-subtitle>Shown are the Products manufactured by the Producer
+      </md-card-subtitle>
+      <md-divider></md-divider>
+      <md-card-content>
+
+
+        <table td-data-table>
+
+
+          <th td-data-table-column
+              *ngFor="let column of columns"
+              [numeric]="column.numeric">
+            {{column.label}}
+          </th>
+
+          <th td-data-table-column>
+            View
+          </th>
+
+          <tr td-data-table-row *ngFor="let product of productRootObject">
+
+            <td td-data-table-cell>
+              {{product.id}}
+            </td>
+            <td td-data-table-cell>
+              {{product.name}}
+            </td>
+
+
+            <td td-data-table-cell>
+              {{product.products_type}}
+            </td>
+
+            <td td-data-table-cell>
+              {{product.description}}
+            </td>
+
+
+            <td td-data-table-cell>
+              {{product.cas_number}}
+            </td>
+
+
+            <td td-data-table-cell>
+              {{product.quantity}}
+            </td>
+
+            <td td-data-table-cell>
+              {{product.quantity_type}}
+            </td>
+
+
+            <td td-data-table-cell (click)="openPrompt(product.id)">
+              <button md-button [class.md-accent]>{{'View Menu'}}</button>
+            </td>
+
+          </tr>
+        </table>
+
+
+      </md-card-content>
+
+
+    </md-card>
+
+
+  </div>
+
+
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Department of Chemicals & PetroChemicals</span>
+      <span flex></span>
+    </div>
+  </td-layout-footer>
+
+
+</td-layout-nav>
