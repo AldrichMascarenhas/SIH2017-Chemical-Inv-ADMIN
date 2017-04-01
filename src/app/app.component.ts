@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MdIconRegistry} from '@angular/material';
-import {Angular2TokenService} from "angular2-token";
 
 @Component({
   selector: 'qs-app',
@@ -31,21 +30,8 @@ export class AppComponent {
   // }
 
 
-  constructor(private _tokenService: Angular2TokenService) {
-    this._tokenService.init({
+  constructor() {
 
-
-      apiPath: 'http://192.168.43.150:3000',
-
-      signInPath: 'admin_auth/sign_in',
-
-      signOutPath: 'admin_auth/sign_out',
-      validateTokenPath: 'admin_auth/validate_token',
-
-      registerAccountPath: 'admin_auth',
-
-
-    });
   }
 
 }

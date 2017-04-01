@@ -16,7 +16,7 @@ export class APIServiceService {
 
 
   GETproducerinstate(state: string) : Observable<ProducersRootModel[]>{
-    return this.http.get(`producersforstate?state=${state}`)
+    return this.http.get(`http://192.168.43.150:3000/producersforstate?state=${state}`)
       .map(res => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')
       );
@@ -24,7 +24,7 @@ export class APIServiceService {
 
 
   GETproductsinProducer(id: number) : Observable<ProductRootObject[]>{
-    return this.http.get(`producers/${id}/products`)
+    return this.http.get(`http://192.168.43.150:3000/producers/${id}/products`)
       .map(res => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')
       );
@@ -32,7 +32,7 @@ export class APIServiceService {
 
 
   GETwarehouseinstate(state: string) : Observable<WarehouseRootObject[]>{
-    return this.http.get(`warehousesforstate?state=${state}`)
+    return this.http.get(`http://192.168.43.150:3000/warehousesforstate?state=${state}`)
       .map(res => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')
       );
